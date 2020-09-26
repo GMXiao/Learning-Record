@@ -9,9 +9,9 @@ Some problems and details when I studying Linux System.
 * cat /proc/meminfo:  查看内存详细使用
 * lsblk: 查看硬盘和分区分布
 * fdisk -l: 看硬盘和分区的详细信息
-* 查看分区的UUID命令： blkid
-* 格式化硬盘： mkfs -t ext4 /dev/sdb
-* 挂载：mount (-t type) (-o option) /dev/sdb point
+* blkid：查看分区的UUID命令
+* mkfs -t ext4 /dev/sdb：格式化硬盘
+* mount (-t type) (-o option) /dev/sdb point：挂载硬盘到某个位置
 ### 有关进程的命令
 * telnet ip port: 测试某个端口的连通性
 * lsof -i:5037: 查看端口号占用
@@ -24,17 +24,41 @@ Some problems and details when I studying Linux System.
 * scp -v -r \<local folder path> root@\<remote IP>:\<remote path>， 传输整个文件夹到指定目录下。
 
 ### git 使用
-    有关git的文档可以查阅 [github官方文档](https://docs.github.com/cn)。
+有关git的文档可以查阅 [github官方文档](https://docs.github.com/cn)。
+
     git远程服务器和本地用户机器之间使用SSH公钥进行验证。
     用户的SSH公私钥一般保存在 ~/.ssh/目录下，分别为id_rsa,id_rsa.pub。如果没有该文件，可以使用ssh-keygen来创建。
     在创建了ssh公私钥之后，可以查看id_rsa.pub，复制其中的公钥内容添加到git上。
 
-## bashrc 和 profile 的区别
-
-## 一些Linux安装时的错误记录
 
 
+## 一些Linux环境安装时的记录
+### bashrc 和 profile 的区别
+#### /etc/profile
+    每个用户登录bash时都会读取的一个配置，里面的配置为所有用户系统环境。它还会读取外部的配置数据。
+#### ~/.bash_profile 
+    bash 在读完了整体环境配置的 /etc/profile 并藉此呼叫其他配置文件后，接下来则是会读取使用者的个人配置文件。 在 login shell 的 bash 环境中，所读取的个人偏好配置文件其实主要有三个，依序分别是：
+    1. ~/bash_profile
+    2. ~/bash_login
+    3. ~/.profile
+    这三个文件会按照顺序读取，并且只会读取其中一个。整个login shell读取流程如下：
+     ![login shell](pictures/loginshell读取流程.png "login shell")
+####
+### 安装虚拟机环境
+    1. 安装图形化 apt install ubuntu-desktop
+    2. 安装virtual-box https://www.virtualbox.org/wiki/Linux_Downloads
+    3. 安装genymotion wget http://202.120.38.131/genymotion-linux_x64.bin
+### adb错误
+    List of devices attached
+    adb server is out of date.  killing...
+    cannot bind 'tcp:5037': Address already in use
+    ADB server didn't ACK
+    * failed to start daemon *
 
+#### 解决方法： 
+
+    lsof -i:5037找出5037端口
+    kill -9 <pid>
 
 ## 虚拟机测试时写的一些脚本
 ### 绑定内核与进程
@@ -51,4 +75,12 @@ Some problems and details when I studying Linux System.
         num=`expr $num + 1`;
     done
 
-### 
+### 使用genymotion虚拟机软件在服务器上进行测试时使用的一些shell脚本：
+* create.sh：使用genymotion提供的命令创建虚拟机，可以选择数量和配置。
+* delete.sh：删除已创建的虚拟机。
+* start.sh：启动固定数目的虚拟机。
+* installapp.sh：在已经启动的虚拟机上通过apk安装软件。
+* startapp.sh：启动所有运行中虚拟机上的某个软件。
+* uninstanllapp.sh：卸载所有运行中的虚拟机的某软件。
+* modifyvm.sh：修改虚拟机的网络模式。
+* getlog.sh：从所有运行中的虚拟机取得某个软件运行的log。
