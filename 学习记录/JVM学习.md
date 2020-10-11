@@ -4,6 +4,12 @@
 * 平台无关性：任何平台只要装载JVM，.class文件（字节码文件）就可以在其上运行。
 * 语言无关性：不同语言只要能编译成 .class文件，就可以在JVM上运行。
 
+## JVM体系介绍
+![JVM体系结构](pictures/jvm体系结构.png "JVM体系结构")
+* Class Loader（类加载器）：用于装载.class文件。
+* Execution Engine（执行引擎）：用于执行字节码或者本地方法。
+* 运行时数据区：方法区、堆、java栈、pc寄存器、本地方法栈。
+
 ## 从JRE、JDK和JVM的关系来看JAVA程序执行过程
 * JDK（Java Development Kit，Java开发工具包）是用来编译、调试Java程序的开发工具包。包括 JRE 及编译器和调试器等用于程序开发的文件。具体来说有Java工具（javac/java/jdb等）和Java基础的类库（java API ）
 * JRE（Java Runtime Environment， Java运行环境）是Java平台，所有的程序都要在JRE下才能够运行。包括JVM和Java核心类库和支持文件。
@@ -11,4 +17,6 @@
 
 下图表示了JDK、JRE和JVM三者间的关系：
 
-![](B:\MyGithub\Linux-Learning\pictures\jdkjvmjre关系.png)
+![JDK、JRE和JVM](pictures/jdkjvmjre关系.png "JDK、JRE和JVM")
+
+使用JDK（调用JAVA API）开发JAVA程序后，通过JDK中的编译程序（javac）将Java程序编译为Java字节码(.class文件)，在JRE上运行这些字节码，JVM会解析并映射到真实操作系统的CPU指令集和OS的系统调用。
