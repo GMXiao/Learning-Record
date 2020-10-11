@@ -5,7 +5,7 @@
 * 语言无关性：不同语言只要能编译成 .class文件，就可以在JVM上运行。
 
 ## JVM体系介绍
-![JVM体系结构](pictures/jvm体系结构.png "JVM体系结构")
+![JVM体系结构](/pictures/jvm体系结构.png "JVM体系结构")
 * Class Loader（类加载器）：用于装载.class文件。
 * Execution Engine（执行引擎）：用于执行字节码或者本地方法。
 * 运行时数据区：方法区、堆、java栈、pc寄存器、本地方法栈。
@@ -17,6 +17,6 @@
 
 下图表示了JDK、JRE和JVM三者间的关系：
 
-![JDK、JRE和JVM](pictures/jdkjvmjre关系.png "JDK、JRE和JVM")
+![JDK、JRE和JVM](/pictures/jdkjvmjre关系.png "JDK、JRE和JVM")
 
 使用JDK（调用JAVA API）开发JAVA程序后，通过JDK中的编译程序（javac）将Java程序编译为Java字节码(.class文件)，在JRE上运行这些字节码，JVM会解析并映射到真实操作系统的CPU指令集和OS的系统调用。
