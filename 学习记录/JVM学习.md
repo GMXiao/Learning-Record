@@ -4,7 +4,7 @@
 * 平台无关性：任何平台只要装载JVM，.class文件（字节码文件）就可以在其上运行。
 * 语言无关性：不同语言只要能编译成 .class文件，就可以在JVM上运行。
 
-## JVM体系介绍
+## JVM 体系介绍
 ![JVM体系结构](/pictures/jvm体系结构.png "JVM体系结构")
 * Class Loader（类加载器）：用于装载.class文件。
 * Execution Engine（执行引擎）：用于执行字节码或者本地方法。

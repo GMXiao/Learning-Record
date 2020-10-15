@@ -20,9 +20,12 @@ Some problems and details when I studying Linux System.
 * pkill <数字信号> <进程名>：根据进程名杀死后台进程。（pkill -9 进程名）
 ### ssh 和 scp 
 * ssh \<username>@serverIP :从一个终端使用ssh连接到另一个终端，需要输入该终端的用户密码。
+#### scp从本地复制至远程
 * scp \<local file path> \<username>@\<remote IP>:\<remote path>,传输单个文件或多个文件到指定目录下，其中local file path可以是单个文件或多个文件，多个文件用空格隔开。
 * scp -v -r \<local folder path> root@\<remote IP>:\<remote path>， 传输整个文件夹到指定目录下。
-
+#### scp从远程复制到本地
+从远程复制到本地，只要将从本地复制到远程的命令的后2个参数调换顺序即可，如下：
+* scp \<username>@\<remote IP>:\<remote path> \<local file path>
 ### git 使用
 有关git的文档可以查阅 [github官方文档](https://docs.github.com/cn)。
 
