@@ -16,7 +16,11 @@ message String {
 ```
 首行定义了语法版本, 即使用 proto3 版本. 然后定义了一个名为 SearchRequest 的 message, 以及它包含的字段(键值对). message 的结构非常类似于各种语言中的 struct, dict 或者 map.
 
-每个字段包括三个部分，类型，字段名和字段编号。字段编号是唯一的，用于在essage的二进制格式中标识字段。    
+每个字段包括三个部分，类型，字段名和字段编号。字段编号是唯一的，用于在essage的二进制格式中标识字段。 
+
+proto3标准类型如下：
+
+![proto3标准类型](/pictures/proto3标准类型.png "proto3标准类型")
 
 ## protobuf 使用特例
 使用 repeated 可以指定重复字段, 即数组：
@@ -54,6 +58,5 @@ message String {
 编译pb/protos文件夹下的所有.proto文件：
 
     protoc --proto_path=pb/protos --go_out=pb pb/protos/*.proto
-* 需要注意的是,在多个
+* 需要注意的是,在有多个.proto文件的目录下，即使只修改了一个.proto文件也需要编译该目录下的所有.proto文件。
 
-### windows
