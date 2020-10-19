@@ -80,3 +80,16 @@ EventBus三要素
     public void messageEventBus(MessageEvent event){
         //自己决定收到消息之后怎么做
     }
+
+## Handler使用
+Handler可以有两种用法：
+* 安排消息（Messages）或者可运行对象（Runables）在将来的某个时间点运行；
+* 入队一个将执行于不同于当前线程的操作（action）。
+### Handler大致使用方法
+#### Handler常用的一些方法有：
+
+    post(Runnable), postAtTime(java.lang.Runnable, long), postDelayed(Runnable, Object, long), sendEmptyMessage(int), sendMessage(Message), sendMessageAtTime(Message, long), and sendMessageDelayed(Message, long)
+post方法将可运行对象（Runables）入队，在被收到的时候调用；sendMessage方法将消息（Messages）入队，通过Handler的handleMessage(Message)方法来对其进行处理。
+
+#### Handler处理
+在发送Messages 或Runables 给Handler之后，可以指定在消息队列准备就绪后立即对其进行处理，也可以指定处理前的具体等待时间，或者具体的处理所用时间。

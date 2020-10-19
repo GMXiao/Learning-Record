@@ -46,7 +46,7 @@ proto3标准类型如下：
 
 ## protobuf 的编译方法
 可以同时编译一个文件，多个文件或者所有文件。
-
+### 对于Go语言来说
 编译文件message.proto,--proto_path指定该文件目录，--go_out指定输出目录：
 
     protoc --proto_path=pb/protos --go_out=pb pb/protos/message.proto
@@ -59,4 +59,5 @@ proto3标准类型如下：
 
     protoc --proto_path=pb/protos --go_out=pb pb/protos/*.proto
 * 需要注意的是,在有多个.proto文件的目录下，即使只修改了一个.proto文件也需要编译该目录下的所有.proto文件。
-
+### 对于Java语言来说
+编译文件message.proto,-I指定该文件目录，--java_out指定输出目录，使用格式和Go语言类似。
