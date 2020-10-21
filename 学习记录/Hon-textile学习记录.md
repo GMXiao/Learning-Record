@@ -61,3 +61,14 @@ proto3标准类型如下：
 * 需要注意的是,在有多个.proto文件的目录下，即使只修改了一个.proto文件也需要编译该目录下的所有.proto文件。
 ### 对于Java语言来说
 编译文件message.proto,-I指定该文件目录，--java_out指定输出目录，使用格式和Go语言类似。
+
+## sqlite3使用
+官网 (https://www.sqlite.org/index.html)
+
+Github 网址 (https://github.com/mattn/go-sqlite3)
+
+GoDoc  地址 (https://godoc.org/github.com/mattn/go-sqlite3)
+
+Go中已经有一个database/sql包，但是它需要一个driver来使用相关方法，（The sql package must be used in conjunction with a database driver. See <https://golang.org/s/sqldrivers> for a list of drivers.）。所以我们可以使用sqlite3的driver来做这件事。
+API可以查看GoDoc文档，使用例可看[下面代码](\相关文档\sqlOpt.go)。
+
