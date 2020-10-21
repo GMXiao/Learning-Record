@@ -38,9 +38,11 @@ Some problems and details when I studying Linux System.
 ## 一些Linux环境安装时的记录
 ### bashrc 和 profile 的区别
 #### /etc/profile和/etc/bashrc
-    每个用户登录bash时都会先读取/etc/profile的配置，里面的配置为所有用户系统环境，之后再读取/etc/bashrc配置（很多系统已经没有该配置文件）。之后继续读取外部的配置。
+    每个用户登录bash时都会先读取/etc/profile的配置，里面的配置为所有用户系统环境，
+    之后再读取/etc/bashrc配置（很多系统已经没有该配置文件）。之后继续读取外部的配置。
 #### ~/.bash_profile 
-    bash 在读完了整体环境配置的 /etc/profile 并藉此呼叫其他配置文件后，接下来则是会读取使用者的个人配置文件。 在 login shell 的 bash 环境中，所读取的个人偏好配置文件其实主要有三个，依序分别是：
+    bash 在读完了整体环境配置的 /etc/profile 并藉此呼叫其他配置文件后，接下来则是会读取使用者的个人配置文件。 
+    在 login shell 的 bash 环境中，所读取的个人偏好配置文件其实主要有三个，依序分别是：
     1. ~/bash_profile
     2. ~/bash_login
     3. ~/.profile
@@ -48,8 +50,10 @@ Some problems and details when I studying Linux System.
 
  ![login shell](pictures/loginshell读取流程.png "login shell")
 #### 总结如下
-    1、用户登入shell进程时，首先读入的是全局环境变量设定的/etc/profile，然后根据其内容读取额外的设定的文档，如/etc/profile.d和/etc/inputrc。
-    2、然后根据不同用户去其家目录读取~/.bash_profile，如果这读取不了就读取~/.bash_login，这个也读取不了才会读取~/.profile，这三个文件设定基本上是一样的, 读取有优先关系.
+    1、用户登入shell进程时，首先读入的是全局环境变量设定的/etc/profile，
+    然后根据其内容读取额外的设定的文档，如/etc/profile.d和/etc/inputrc。
+    2、然后根据不同用户去其家目录读取~/.bash_profile，如果这读取不了就读取~/.bash_login，
+    这个也读取不了才会读取~/.profile，这三个文件设定基本上是一样的, 读取有优先关系.
     3、之后根据不同用户读取不同的~/.bashrc
 ### 安装虚拟机环境
     1. 安装图形化 apt install ubuntu-desktop
