@@ -33,7 +33,12 @@ Some problems and details when I studying Linux System.
     用户的SSH公私钥一般保存在 ~/.ssh/目录下，分别为id_rsa,id_rsa.pub。如果没有该文件，可以使用ssh-keygen来创建。
     在创建了ssh公私钥之后，可以查看id_rsa.pub，复制其中的公钥内容添加到git上。
 
-
+## tmux使用
+* 命名窗口：先 ctrl+b，然后按 $ 
+* tmux 会话列表：tmux ls
+* 重新进入上次的会话：tmux a -t < session name>
+* 删除tmux 会话：ctrl + d
+* 退出tmux 会话，下次还要进入：直接关闭窗口或者先 ctrl+b，然后按 d（退回shell）
 
 ## 一些Linux环境安装时的记录
 ### bashrc 和 profile 的区别

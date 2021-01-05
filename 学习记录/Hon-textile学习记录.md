@@ -72,3 +72,9 @@ GoDoc  地址 (https://godoc.org/github.com/mattn/go-sqlite3)
 Go中已经有一个database/sql包，但是它需要一个driver来使用相关方法，（The sql package must be used in conjunction with a database driver. See <https://golang.org/s/sqldrivers> for a list of drivers.）。所以我们可以使用sqlite3的driver来做这件事。
 API可以查看GoDoc文档，使用例可看[实例代码](https://github.com/GMXiao/Linux-Learning/blob/master/%E7%9B%B8%E5%85%B3%E6%96%87%E6%A1%A3/sqlOpt.go)。
 
+## 服务器部署cafe节点
+* 创建节点wallet: textile wallet create
+* 初始化IPFS节点: textile init < seed >
+* 生成token: textile token add
+* Android源码中部署cafe 信息: url("http://139.159.200.151:40601"),token("a33d...")
+
