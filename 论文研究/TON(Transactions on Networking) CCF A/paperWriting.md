@@ -2,6 +2,10 @@
 
 本文档整理一些关于论文中的专业术语等。
 
+### 论文思路
+
+1、DCDN（decentralized content delivery network） 分布式内容分发网络，基于分布式技术和内容分发网络技术，来确定数据块的分布。而且可以动态地学习网络中流量的分布以设定分布式内容分发网络的位置（即将热门内容根据网络流量状态动态地调整所存储位置）,可见论文：[Tapping the Knowledge of Dynamic Traffic Demands for Optimal CDN Design.](https://ieeexplore.ieee.org/document/8552665)
+
 
 ## 三层网络结构
 三层网络架构设计的网络有三个层次：核心层（网络的高速交换主干）、汇聚层（提供基于策略的连接）、接入层 （将工作站接入网络）。

@@ -1,3 +1,53 @@
+## 编译原理
+![c程序编译链接过程](/pictures/程序编译链接过程.png)
+编译步骤具体如下：
+![c程序编译链接](../pictures/程序编译链接过程解释.png)
+结合linux系统叙述：
+
+    1.预处理 选项 gcc -E test.c -o test.c (-E: Preprocess only; do not compile, assemble or link. -o <file>: Place the output into <file>)
+
+        预处理完成就停下来，产生结果放在test.i文件中。
+
+    2.编译 选项 gcc -S test.c (-S: Compile only; do not assemble or link.)
+
+        编译完成之后就停下来，结果保存在test.s中。
+
+    3.编译 gcc -C test.c (-c: Compile and assemble, but do not link.)
+
+        汇编完成之后就停下来，结果保存在test.o中。
+
+### 静态链接 和 动态链接
+在程序链接的阶段，可以采用静态方式或者动态方式。静态链接就是在编译链接时直接将需要的执行代码拷贝到调用处。动态链接就是在编译的时候不直接拷贝可执行代码，而是通过记录一系列符号和参数，在程序运行或加载时将这些信息传递给操作系统，操作系统负责将需要的动态库加载到内存中，然后程序在运行到指定的代码时，去共享执行内存中已经加载的动态库可执行代码，最终达到运行时连接的目的。
+
+静态链接代码装载速度快，执行速度比动态链接快，但生成的可执行文件比较大。
+
+动态链接可以节省内存，减少页面交换。dll文件（拥有外部函数）与exe文件独立，只需要保证接口不变，更换dll文件对exe无影响，极大地提高可维护性和可拓展性。不同的编译语言可以用同一个dll文件。适用于大规模软件开发，使得开发过程独立，耦合度小。缺点是运行速度慢，且dll文件不存在程序会终止运行并报错。
+
+## new/delete 和 malloc/free 的区别与联系
+### 区别
+1、 malloc/free 是函数（标准库函数 void *malloc(long NumBytes)，void free(void *FirstByte)），new/free是运算符。
+
+2、 malloc分配内存要进行字节计算和类型转换
+ 
+    
+    用malloc 申请一块长度为length 的整数类型的内存，程序如下：
+    int *p = (int *) malloc(sizeof(int) * length);
+    们应当把注意力集中在两个要素上：
+    1)、malloc 返回值的类型是void *，所以在调用malloc 时要显式地进行类型转换，将void * 转换成所需要的指针类型。
+    2)、 malloc 函数本身并不识别要申请的内存是什么类型，它只关心内存的总字节数。
+
+使用new更加简便，不需要进行类型转换和字节计算（这是因为new 内置了sizeof、类型转换和类型安全检查功能）：
+
+    int *p1 = (int *)malloc(sizeof(int) * length);
+    int *p2 = new int[length];
+
+3、 对于非基本数据类型的对象而言，对象在创建的同时要自动执行构造函数，对象在消亡之前要自动执行析构函数。由于malloc/free是库函数而不是运算符，不能把执行构造函数和析构函数的任务加于malloc/free。因此C++语言需要一个能完成动态内存分配和初始化工作的运算符new，以及一个能完成清理与释放内存工作的运算符delete。
+  
+4、 new/delete是保留字，不需要头文件支持；malloc/free需要头文件库函数支持。
+
+### 联系
+既然new/delete的功能完全覆盖了malloc/free，为什么C++还保留malloc/free呢？因为C++程序经常要调用C函数，而C程序只能用malloc/free管理动态内存。如果用free释放“new创建的动态对象”，那么该对象因无法执行析构函数而可能导致程序出错。如果用delete释放“malloc申请的动态内存”，理论上讲程序不会出错，但是该程序的可读性很差。所以new/delete，malloc/free必须配对使用。
+
 ## 声明和定义
 变量定义：用于为变量分配存储空间，还可为变量指定初始值。程序中，变量有且仅有一个定义。
 
@@ -64,3 +114,5 @@
     static int x;
     return x;     // 安全，x 在函数作用域外依然是有效的
     }  
+
+## 宏定义

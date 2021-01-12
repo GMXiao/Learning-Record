@@ -10,3 +10,13 @@
 * 切回主分支 git checkout master
 * 合并dev内容到master：git merge dev （将指定分支合并到当前分支）
 * 删除分支dev git branch -d dev
+
+### 本地新建仓库并推送到远程
+
+    先在远程github创建新仓库，假如其git SSH地址为git@github.com:GMXiao/Linux_Kernal5.9.git。
+    再在本地进行下列操作：
+    git init
+    git commit -m "first commit"
+    git branch -M main
+    git remote add origin git@github.com:GMXiao/Linux_Kernal5.9.git
+    git push -u origin main
