@@ -10,6 +10,8 @@
 
     3、数组存储的元素必须是同一个数据类型；集合存储的对象可以是不同数据类型。
 
+
+
 ### 集合常用接口
 #### Iterator 接口
 在Iterator接口中定义了三个方法：
@@ -44,7 +46,7 @@ HashMap、HashTable、TreeMap的区别：
 
 # JVM（Java Virtual Machine）
 ## JVM 简介
-所有加java程序的运行都要依靠具体的java虚拟机实例，java虚拟机是一个抽象的体系结构，具有平台无关性和语言无关性。
+所有java程序的运行都要依靠具体的java虚拟机实例，java虚拟机是一个抽象的体系结构，具有平台无关性和语言无关性。
 * 平台无关性：任何平台只要装载JVM，.class文件（字节码文件）就可以在其上运行。
 * 语言无关性：不同语言只要能编译成 .class文件，就可以在JVM上运行。
 
@@ -64,3 +66,38 @@ HashMap、HashTable、TreeMap的区别：
 ![JDK、JRE和JVM](/pictures/jdkjvmjre关系.png "JDK、JRE和JVM")
 
 使用JDK（调用JAVA API）开发JAVA程序后，通过JDK中的编译程序（javac）将Java程序编译为Java字节码(.class文件)，在JRE上运行这些字节码，JVM会解析并映射到真实操作系统的CPU指令集和OS的系统调用。
+
+## Java native
+native是与C++联合开发的时候用的！
+
+使用native关键字说明这个方法是原生函数，也就是这个方法是用C/C++语言实现的，并且被编译成了DLL，由java去调用。
+
+![Java Native方法实现流程图](/pictures/java_native.png)
+
+## 计算机网络
+
+### TCP三次握手
+
+    原因：发送SYN包时附带了起始序号，A给B发SYN，B给A发SYN+ACK，各自约定起始序号，第三个包是A发给B的ACK，表示收到了B发送的起始序号。
+
+### TCP四次分手
+
+    原因：TCP是全双工通信，需要两边全部发完且结束。
+
+
+## 数据库
+
+### 为什么用B+树来索引
+数据库可能很大，一般不会全部放在内存中，使用B+树可以减少内存与磁盘的I/O，B+树单个节点可以存放多个索引，磁盘I/O一次可以得到很多数据，提高了数据查找时的命中率。
+
+
+## Redis
+REmote DIctionary Server(Redis) 是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。
+
+Redis 官网：https://redis.io/
+
+源码地址：https://github.com/redis/redis
+
+Redis 在线测试：http://try.redis.io/
+
+Redis 命令参考：http://doc.redisfans.com/
