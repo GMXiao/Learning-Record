@@ -30,3 +30,8 @@ function blocksGrouping(bInfo,length)
     end while
 end function
 ```
+
+创新点：
+1、扩展0比特来优化hash-judgement阶段
+2、扩大定义的最小块的容量
+3、归一化切块？？

@@ -2,6 +2,7 @@
 Some problems and details when I studying Linux System.
 
 ## 一些常用命令
+
 ### 查看系统信息
 * lscpu：查看的是cpu的统计信息.
 * cat /proc/cpuinfo：可以知道每个cpu信息，如每个CPU的型号，主频等。

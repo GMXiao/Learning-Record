@@ -202,7 +202,7 @@ https://blog.csdn.net/jiange_zh/article/details/79356417
  
     double& setValues( int i )
     {
-    return vals[i];   // 返回第 i 个元素的引用
+        return vals[i];   // 返回第 i 个元素的引用
     }
 
     int main(){
@@ -558,6 +558,37 @@ https://blog.csdn.net/u014465639/article/details/72812187
 
 使用 inline 关键字的函数称为“内联函数”。内联函数和普通函数的区别在于：当编译器处理调用内联函数的语句时，不会将该语句编译成函数调用的指令，而是直接将整个函数体的代码插人调用语句处，就像整个函数体在调用处被重写了一遍一样。
 
+
+## C++ 使用VS创建和使用动态库ddl
+1.静态库：函数和数据被编译进一个二进制文件（扩展名通常为.lib）,在使用静态库的情况下，在编译链接文件时，链接器从静态库中复制这些函数和数据，并把它们和应用程序的其他模块组合起来创建最终的可执行文件（.exe）。当发布产品时，只需要发布这个可执行文件，并不需要发布被使用的静态库。
+
+2.动态库：在使用动态库时，往往提供两个文件：一个引入库（.lib，非必须）和一个.dll文件。这里的引入库和静态库文件虽然扩展名都是.lib，但是有着本质上的区别，对于一个动态链接库来说，其引入库文件包含该动态库导出的函数和变量的符号名，而.dll文件包含该动态库实际的函数和数据。
+
+### 创建
+
+
+### 使用
+
+
+### 查看
+在vs自带的命令提示符中，使用 dumpbin 命令来查看dll提供的方法，以及查看exe文件使用了那些动态库文件。用法如下：
+
+    查看导出：dumpbin -exports 文件名称
+
+    查看导入：dumpbin -imports 文件名称
+
+## cmake学习历程
+### gcc、g++、make、cmake区别
+https://blog.csdn.net/hblhly/article/details/80740493
+
+目标：让eigen3可以在windows环境下被使用，使用cmake进行编译，在vs或者vs code的编辑器中进行编辑。  
+现状：目前在环境 linux+cmake 中编译及运行是没有问题的。  
+问题：在 windows+vscode+cmake 环境中存在问题  
+解决方案：
+
+    1、vscode只用来编辑代码；修改CMakeLists.txt中 “include_directories("C:/Program Files (x86)/Eigen3/include")”；
+    2、使用cmake来进行Makefile的生成，指令为：cmake [options] \<path-to-source> （具体为：“cmake -G "MinGW Makefiles" ..” ，-G指定编译器，这里是mingw32，".."代表上层目录，当前我们在build目录中）；
+    3、然后执行mingw32-make（即make指令，由于cmake使用mingw32，所以我们不能将mingw32改名为make）执行Makefile中的指令生成我们想要的东西。
 
 
 
