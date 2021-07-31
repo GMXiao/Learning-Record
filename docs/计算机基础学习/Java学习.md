@@ -256,3 +256,7 @@ Date:生成响应的日期和时间；Content-Type:指定了MIME类型的HTML(te
 5、释放 TCP连接;
 
 6、浏览器将该 html 文本并显示内容;
+
+
+## java内存回收机制
+[相关链接](https://www.cnblogs.com/manmanrenshenglu/p/10516313.html)
