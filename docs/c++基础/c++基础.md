@@ -2,38 +2,6 @@
 [20道必须掌握的c++面试题](https://www.w3cschool.cn/cpp/cpp-a9no2ppi.html)
 
 
-    
-
-
-## 编译原理
-![c程序编译链接过程](/pictures/程序编译链接过程.png)
-
-编译步骤具体如下：
-
-![c程序编译链接](../pictures/程序编译链接过程解释.png)
-
-结合linux系统叙述：
-
-    1.预处理 选项 gcc -E test.c -o test.c (-E: Preprocess only; do not compile, assemble or link. -o <file>: Place the output into <file>)
-
-        预处理完成就停下来，产生结果放在test.i文件中。
-
-    2.编译 选项 gcc -S test.c (-S: Compile only; do not assemble or link.)
-
-        编译完成之后就停下来，结果保存在test.s中。
-
-    3.汇编 gcc -C test.c (-c: Compile and assemble, but do not link.)
-
-        汇编完成之后就停下来，结果保存在test.o中。
-
-这篇博客用简单的代码例子讲解了链接的大致过程，还浅谈了有关编写C++头文件的规则：https://www.cnblogs.com/fenglongyu/p/8655104.html
-### 静态链接 和 动态链接
-在程序链接的阶段，可以采用静态方式或者动态方式。静态链接就是在编译链接时直接将需要的执行代码拷贝到调用处。动态链接就是在编译的时候不直接拷贝可执行代码，而是通过记录一系列符号和参数，在程序运行或加载时将这些信息传递给操作系统，操作系统负责将需要的动态库加载到内存中，然后程序在运行到指定的代码时，去共享执行内存中已经加载的动态库可执行代码，最终达到运行时连接的目的。
-
-静态链接代码装载速度快，执行速度比动态链接快，但生成的可执行文件比较大。
-
-动态链接可以节省内存，减少页面交换。dll文件（拥有外部函数）与exe文件独立，只需要保证接口不变，更换dll文件对exe无影响，极大地提高可维护性和可拓展性。不同的编译语言可以用同一个dll文件。适用于大规模软件开发，使得开发过程独立，耦合度小。缺点是运行速度慢，且dll文件不存在程序会终止运行并报错。
-
 ## new/delete 和 malloc/free 的区别与联系
 ### 区别
 1、 malloc/free 是函数（标准库函数 void *malloc(long NumBytes)，void free(void *FirstByte)），new/delete是运算符。
@@ -401,14 +369,16 @@ C++ 的一个特点在于通过模板的概念实现了对泛型程序设计的�
 
 ## const的理解
 1、一个经典的问题，const修饰指针变量，问以下两种声明的区别：
-1)  const char * p
-2)  char * const p
+1)  const char * p (等价于 char const* p) = "一个char型变量"
+2)  char * const p = "一个地址"
 
 这里的 const 关键字是用于修饰常量，书上说 const 将修饰离它最近的对象，所以，以上两种声明的意思分别应该是：
 1)  p 是一个指向常量字符的指针，不变的是 char 的值，即该字符的值在定义时初始化后就不能再改变。
 2)  p 是一个指向字符的常量指针，不变的是 p 的值，即该指针不能再指向别的。
 
 Bjarne 在他的《The C++ Programming Language》里面给出过一个助记的方法——“以 * 分界，把一个声明从右向左读”。*读作
+
+const char *const p = "一个地址" ，这种形式下p与p指向的地址中的值都不能修改。
 
 2、const成员变量
 const 成员变量的用法和普通 const 变量的用法相似，只需要在声明时加上 const 关键字。初始化 const 成员变量只有一种方法，就是通过构造函数的初始化列表。
@@ -498,6 +468,15 @@ const修饰函数承诺在本函数内部不会修改类内的数据成员，不
         A a(b,7);
         a.handleNums();
     }
+
+## 数据模型与变量大小
+c语言中有基本类型：char,short,int,long,float,double.每种类型在不同的数据模型下所占用的内存空间不同。
+
+数据模型包括：LP32,ILP32,LP64,LLP64,ILP64.
+
+![](../../pictures/数据模型和内存大小.png)
+
+32位环境的数据模型为ILP32；64位环境使用LP64；现有的unix64位系统使用LP64
 
 ## 数据结构——树
 详细的教程可以看：https://www.zhihu.com/question/30527705/answer/1663740519

@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "string.h": "c",
+        "memprin.h": "c",
+        "stdio.h": "c",
+        "map": "cpp"
+    }
+}
